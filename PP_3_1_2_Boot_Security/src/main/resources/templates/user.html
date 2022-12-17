@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:href="@{css/bootstrap.min.css}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>User page</title>
+</head>
+<body style="height: 100vh">
+<header class="bd-header bg-dark py-3 d-flex align-items-stretch border-bottom border-dark">
+    <div class="container-fluid d-flex align-items-center">
+        <h1 class="d-flex align-items-center fs-4 text-white mb-0"
+            th:text="${user.getUsername()} +' with roles: '+ ${user.getRoles()}">
+        </h1>
+        <a th:href="@{/logout}" class="ms-auto link-secondary text-decoration-none">Logout</a>
+    </div>
+</header>
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="col-md-2 g-0 py-3">
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#" id="user-nav-link" data-bs-toggle="tab"
+                       data-bs-target="#user-panel"
+                       type="button" role="tab" aria-controls="user-panel" aria-selected="false">User</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-10 bg-light gx-5 py-3 tab-content">
+            <div class="tab-pane fane show active" id="user-panel" role="tabpanel"
+                 aria-labelledby="user-nav-link" tabindex="0">
+                <h2>User information-page</h2>
+                <div class="tab-content" role="tabpanel" aria-labelledby="admin-nav-link">
+                    <div class="tab-pane fade show active" role="tabpanel" tabindex="0">
+                        <div class="card">
+                            <h5 class="card-header">About user</h5>
+                            <div class="card-body text-center">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">User name</th>
+                                        <th scope="col">Age of birth</th>
+                                        <th scope="col">Role</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td th:text="${user.getId()}"></td>
+                                        <td th:text="${user.getUsername()}"></td>
+                                        <td th:text="${user.getAge_of_birth()}"></td>
+                                        <td th:text="${user.getRoles()}"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
